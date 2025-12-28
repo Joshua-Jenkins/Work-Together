@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1gf3b28hpqha"]
+
+[ext_resource type="Script" uid="uid://cvvt4vkk5r7tw" path="res://Work-Together/Scenes/Weapons/scripts/smg.gd" id="1_egbjd"]
+[ext_resource type="Texture2D" uid="uid://cnd2dltudni3r" path="res://Work-Together/Art/SMG.png" id="2_egbjd"]
+
+[node name="SMG" type="Node2D"]
+script = ExtResource("1_egbjd")
+fire_interval = 0.1
+bullet_speed = 900.0
+bullet_damage = 1
+bullet_radius = 2.5
+knockback_force = 140.0
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+texture_filter = 1
+position = Vector2(24, 0)
+scale = Vector2(0.017293295, 0.021728514)
+texture = ExtResource("2_egbjd")
+
+[node name="Muzzle" type="Marker2D" parent="Pivot"]
+position = Vector2(36, 0)

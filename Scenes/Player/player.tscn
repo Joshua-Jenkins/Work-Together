@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxlucca2v171v"]
+
+[ext_resource type="Script" uid="uid://c0p0mxj37lq83" path="res://Work-Together/Scenes/Player/Scripts/player.gd" id="1_qagn7"]
+[ext_resource type="Texture2D" uid="uid://dex8hlbgbkcgw" path="res://Work-Together/Art/Playerr.png" id="2_qagn7"]
+[ext_resource type="PackedScene" uid="uid://858mflhf63dh" path="res://Work-Together/Scenes/Weapons/HandGun.tscn" id="3_bs361"]
+[ext_resource type="PackedScene" uid="uid://c1gf3b28hpqha" path="res://Work-Together/Scenes/Weapons/SMG.tscn" id="3_dpk7a"]
+[ext_resource type="Script" uid="uid://daw7hiwh1mcfi" path="res://Work-Together/Scenes/Player/Scripts/playerhealth.gd" id="4_dpk7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qagn7"]
+size = Vector2(27, 8.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bs361"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 4
+script = ExtResource("1_qagn7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.9999847, -20.000008)
+scale = Vector2(0.060546882, 0.0727931)
+texture = ExtResource("2_qagn7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(-3, -4)
+shape = SubResource("RectangleShape2D_qagn7")
+
+[node name="WeaponPivot" type="Node2D" parent="."]
+
+[node name="SMG" parent="WeaponPivot" instance=ExtResource("3_dpk7a")]
+position = Vector2(10, 6)
+start_delay = 0.05
+
+[node name="HandGun" parent="WeaponPivot" instance=ExtResource("3_bs361")]
+position = Vector2(-10, -6)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-3, -16)
+shape = SubResource("CircleShape2D_bs361")
+
+[node name="PlayerHealth" type="Node" parent="."]
+script = ExtResource("4_dpk7a")

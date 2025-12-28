@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://rhjckjr8mya7"]
+
+[ext_resource type="Script" uid="uid://co88um28n5uay" path="res://Work-Together/Scenes/UI/scripts/hud.gd" id="1_1vncx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vncx"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 8.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.1764706)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_1vncx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 354.0
+offset_bottom = 168.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vncx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "HP 20/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(220, 14)
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+show_percentage = false
