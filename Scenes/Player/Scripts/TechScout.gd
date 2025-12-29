@@ -1,7 +1,6 @@
 # Player.gd (Godot 4.5.1)
 # Top-down Brotato-style movement: snappy accel + decel, supports keyboard + gamepad.
 extends CharacterBody2D
-class_name 
 
 
 @export var max_speed: float = 360.0

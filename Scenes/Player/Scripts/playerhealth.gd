@@ -39,6 +39,7 @@ func _on_hurtbox_body_entered(body: Node) -> void:
 		return
 
 	take_damage(contact_damage)
+	print("Took DAmage:", contact_damage)
 
 func take_damage(amount: int) -> void:
 	hp = max(hp - amount, 0)
