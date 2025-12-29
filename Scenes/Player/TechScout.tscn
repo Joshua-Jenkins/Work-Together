@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://du6vpt0up7amy"]
+
+[ext_resource type="Script" uid="uid://rfrw2p6prddy" path="res://Work-Together/Scenes/Player/Scripts/TechScout.gd" id="1_3ja7f"]
+[ext_resource type="Texture2D" uid="uid://beh7trary2mjt" path="res://Work-Together/Art/character_tech_scout_preview_128x128.png" id="2_unbd4"]
+[ext_resource type="PackedScene" uid="uid://858mflhf63dh" path="res://Work-Together/Scenes/Weapons/HandGun.tscn" id="4_4g0a6"]
+[ext_resource type="Script" uid="uid://daw7hiwh1mcfi" path="res://Work-Together/Scenes/Player/Scripts/playerhealth.gd" id="5_yfdsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qagn7"]
+size = Vector2(27, 4.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_madyp"]
+radius = 17.0
+height = 112.0
+
+[node name="TechScout" type="CharacterBody2D" groups=["player"]]
+collision_mask = 4
+script = ExtResource("1_3ja7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -79)
+scale = Vector2(0.72155756, 1.4137294)
+texture = ExtResource("2_unbd4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(3.5, -1.875)
+shape = SubResource("RectangleShape2D_qagn7")
+
+[node name="WeaponPivot" type="Node2D" parent="."]
+
+[node name="HandGun" parent="WeaponPivot" instance=ExtResource("4_4g0a6")]
+position = Vector2(4, -70)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(3, -54)
+shape = SubResource("CapsuleShape2D_madyp")
+
+[node name="PlayerHealth" type="Node" parent="."]
+script = ExtResource("5_yfdsf")

@@ -1,6 +1,6 @@
 # Enemy.gd (Godot 4.5.1) — paste whole script
 extends CharacterBody2D
-class_name EnemyTwo
+class_name Enemy
 
 
 @onready var sprite: Sprite2D = $Sprite2D

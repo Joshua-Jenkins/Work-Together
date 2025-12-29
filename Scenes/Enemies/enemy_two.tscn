@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://dknr2smofyq8b"]
+
+[ext_resource type="Script" uid="uid://evaf56x22mtx" path="res://Work-Together/Scenes/Enemies/Scripts/enemy_two.gd" id="1_gy106"]
+[ext_resource type="Texture2D" uid="uid://dk1jmas7do8f" path="res://Work-Together/Art/enemy3.png" id="2_gy106"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6nwcp"]
+radius = 215.00931
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbg5i"]
+atlas = ExtResource("2_gy106")
+region = Rect2(50, 0, 384, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kepu6"]
+atlas = ExtResource("2_gy106")
+region = Rect2(434, 0, 384, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x34qt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbg5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kepu6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uf5du"]
+radius = 50.803543
+
+[node name="Enemytwo" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_gy106")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9.536743e-07, -19)
+scale = Vector2(0.048909497, 0.058715813)
+texture = ExtResource("2_gy106")
+
+[node name="SeparationArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeparationArea"]
+position = Vector2(50, -86)
+shape = SubResource("CircleShape2D_6nwcp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(25, -236)
+sprite_frames = SubResource("SpriteFrames_x34qt")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3, -34)
+shape = SubResource("CircleShape2D_uf5du")

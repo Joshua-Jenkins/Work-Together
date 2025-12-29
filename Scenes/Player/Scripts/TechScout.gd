@@ -62,7 +62,7 @@ func _update_sprite_flip() -> void:
 	if dir == Vector2.ZERO:
 		return
 	if abs(dir.x) > 0.01:
-		sprite.flip_h = dir.x > 0.0
+		sprite.flip_h = dir.x < 0.0
 
 func _on_hp_changed(hp: int, max_hp: int) -> void:
 	print("HP UI:", hp, "/", max_hp)

@@ -11,8 +11,8 @@ script = ExtResource("1_a8xxl")
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture_filter = 1
 position = Vector2(24, 0)
-scale = Vector2(0.043701176, 0.0571289)
+scale = Vector2(0.010101318, 0.0115356445)
 texture = ExtResource("2_whifs")
 
 [node name="Muzzle" type="Marker2D" parent="Pivot"]
-position = Vector2(34, 0)
+position = Vector2(26, 0)
