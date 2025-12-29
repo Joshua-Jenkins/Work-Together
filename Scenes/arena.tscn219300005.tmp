@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpgii06epg0my" path="res://Work-Together/Art/Floor.png" id="1_ufdde"]
 [ext_resource type="Script" uid="uid://bd7n6ro0m6q3q" path="res://Work-Together/Scenes/Enemies/Scripts/enemyspawner.gd" id="3_rkoyy"]
-[ext_resource type="PackedScene" uid="uid://b4uwqdiod8eac" path="res://Work-Together/Scenes/Enemies/enemy_one.tscn" id="3_suh8m"]
+[ext_resource type="PackedScene" uid="uid://dknr2smofyq8b" path="res://Work-Together/Scenes/Enemies/enemy_two.tscn" id="3_suh8m"]
 [ext_resource type="PackedScene" uid="uid://cxlucca2v171v" path="res://Work-Together/Scenes/Player/player.tscn" id="5_7eek3"]
 [ext_resource type="PackedScene" uid="uid://rhjckjr8mya7" path="res://Work-Together/Scenes/UI/hud.tscn" id="5_suh8m"]
 
@@ -22,7 +22,6 @@ polygon = PackedVector2Array(-581, -346, -576, 314, -452, 398, 463, 396, 577, 31
 [node name="Node" type="Node" parent="." groups=["enemies"]]
 script = ExtResource("3_rkoyy")
 enemy_scene = ExtResource("3_suh8m")
-player_path = NodePath("../Player")
 walls_polygon_path = NodePath("../Walls/CollisionPolygon2D")
 
 [node name="HUD" parent="." instance=ExtResource("5_suh8m")]
@@ -30,4 +29,4 @@ walls_polygon_path = NodePath("../Walls/CollisionPolygon2D")
 [node name="Player" parent="." instance=ExtResource("5_7eek3")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -4)
+position = Vector2(374, -2)

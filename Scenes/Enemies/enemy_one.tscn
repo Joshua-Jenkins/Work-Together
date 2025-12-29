@@ -7,7 +7,7 @@
 radius = 13.341664
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6nwcp"]
-radius = 40.0
+radius = 76.05919
 
 [node name="EnemyOne" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -27,5 +27,5 @@ shape = SubResource("CircleShape2D_uf5du")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeparationArea"]
-position = Vector2(0, -1)
+position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_6nwcp")
