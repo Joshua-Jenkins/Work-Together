@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://db8n0o2h1slth"]
+[gd_scene load_steps=8 format=3 uid="uid://db8n0o2h1slth"]
 
 [ext_resource type="Texture2D" uid="uid://bpgii06epg0my" path="res://Work-Together/Art/Floor.png" id="1_ufdde"]
 [ext_resource type="Script" uid="uid://bd7n6ro0m6q3q" path="res://Work-Together/Scenes/Enemies/Scripts/enemyspawner.gd" id="3_rkoyy"]
 [ext_resource type="PackedScene" uid="uid://b4uwqdiod8eac" path="res://Work-Together/Scenes/Enemies/enemy_one.tscn" id="3_suh8m"]
 [ext_resource type="PackedScene" uid="uid://cxlucca2v171v" path="res://Work-Together/Scenes/Player/player.tscn" id="5_7eek3"]
 [ext_resource type="PackedScene" uid="uid://rhjckjr8mya7" path="res://Work-Together/Scenes/UI/hud.tscn" id="5_suh8m"]
+[ext_resource type="Script" uid="uid://c7d5nlhww3rr3" path="res://Work-Together/Scripts/perk_manager.gd" id="6_7eek3"]
+[ext_resource type="Script" uid="uid://e072re7a0w1l" path="res://Work-Together/Scripts/run_timer.gd" id="7_te6lo"]
 
 [node name="Arena" type="Node2D"]
 
@@ -19,15 +21,22 @@ collision_layer = 4
 build_mode = 1
 polygon = PackedVector2Array(-581, -346, -576, 314, -452, 398, 463, 396, 577, 317, 579, -339, 455, -414, -456, -419)
 
-[node name="Node" type="Node" parent="." groups=["enemies"]]
+[node name="EnemySpawner" type="Node" parent="." groups=["enemies"]]
 script = ExtResource("3_rkoyy")
 enemy_scene = ExtResource("3_suh8m")
 player_path = NodePath("../Player")
-walls_polygon_path = NodePath("../Walls/CollisionPolygon2D")
+walls_polygon_path = NodePath("../Walls")
+
+[node name="Player" parent="." instance=ExtResource("5_7eek3")]
+position = Vector2(5, 3)
+platform_floor_layers = 3165712624
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="HUD" parent="." instance=ExtResource("5_suh8m")]
 
-[node name="Player" parent="." instance=ExtResource("5_7eek3")]
+[node name="PerkManager" type="Node" parent="."]
+script = ExtResource("6_7eek3")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -4)
+[node name="RunTimer" type="Node" parent="."]
+script = ExtResource("7_te6lo")

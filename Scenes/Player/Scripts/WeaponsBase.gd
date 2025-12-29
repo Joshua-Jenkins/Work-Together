@@ -6,6 +6,9 @@ enum TargetMode { NEAREST_ENEMY, FACING_DIR_ONLY }
 @export var target_mode: TargetMode = TargetMode.NEAREST_ENEMY
 @export var enemy_group: StringName = &"enemies"
 
+
+
+
 @export var fire_interval: float = 0.30
 @export var aim_range: float = 650.0
 @export var max_targets_checked: int = 60  # perf cap
@@ -31,6 +34,7 @@ enum TargetMode { NEAREST_ENEMY, FACING_DIR_ONLY }
 
 @export var knockback_force: float = 260.0
 
+var stats : PlayerStats
 
 var _cooldown: float = 0.0
 
@@ -126,8 +130,17 @@ func _apply_aim(dir: Vector2, delta: float) -> void:
 
 # Override this in child weapons for shotgun bursts, spread, beams, etc.
 func _do_fire(aim_dir: Vector2) -> void:
+	var dmg := bullet_damage
+	var spd := bullet_speed
+	var kb := knockback_force
+	var interval := fire_interval
+	if stats:
+		dmg = int(round(float(dmg) * stats.weapon_damage_mult))
+		spd = spd * stats.bullet_speed_mult
+		kb = kb * stats.knockback_mult
+		interval = fire_interval / stats.weapons_fire_rate_mult
 	_spawn_bullet(muzzle.global_position if muzzle else global_position, aim_dir, bullet_speed, bullet_damage, bullet_lifetime, bullet_radius)
-
+	
 func _spawn_bullet(pos: Vector2, dir: Vector2, speed: float, damage: int, life: float, radius: float) -> void:
 	var b := Bullet.new()
 	b.global_position = pos
@@ -153,6 +166,9 @@ class Bullet:
 	func _ready() -> void:
 		monitoring = true
 		monitorable = true
+		#var player := owner as Node
+		#if player:
+			#stats = player.get_node_or_null("PlayerStats") as PlayerStats
 
 		# Bullet on Layer 4, detects Enemy Layer 2
 		collision_layer = 1 << 3

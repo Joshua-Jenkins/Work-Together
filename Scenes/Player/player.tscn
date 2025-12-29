@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxlucca2v171v"]
+[gd_scene load_steps=8 format=3 uid="uid://cxlucca2v171v"]
 
 [ext_resource type="Script" uid="uid://c0p0mxj37lq83" path="res://Work-Together/Scenes/Player/Scripts/player.gd" id="1_qagn7"]
 [ext_resource type="Texture2D" uid="uid://dex8hlbgbkcgw" path="res://Work-Together/Art/Playerr.png" id="2_qagn7"]
 [ext_resource type="PackedScene" uid="uid://858mflhf63dh" path="res://Work-Together/Scenes/Weapons/HandGun.tscn" id="3_bs361"]
 [ext_resource type="Script" uid="uid://daw7hiwh1mcfi" path="res://Work-Together/Scenes/Player/Scripts/playerhealth.gd" id="4_dpk7a"]
+[ext_resource type="Script" uid="uid://mj1s34mg8mnb" path="res://Work-Together/Scenes/Player/Scripts/player_stats.gd" id="5_idofd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qagn7"]
 size = Vector2(27, 8.5)
@@ -39,3 +40,6 @@ shape = SubResource("CircleShape2D_bs361")
 
 [node name="PlayerHealth" type="Node" parent="."]
 script = ExtResource("4_dpk7a")
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("5_idofd")
